@@ -51,6 +51,14 @@ jobs:
       if: github.event_name == 'push'
       run: terraform plan -no-color -var "rglocation=${{ vars.RGLOCATION }}" -var "rgname=${{ vars.RGNAME }}" 
 
+    - name: Terraform Apply
+      if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+      env:
+        ARM_CLIENT_ID: ${{ secrets.CLIENT_ID }}
+        ARM_CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
+        ARM_TENANT_ID: ${{ secrets.ENANT_ID }}
+        ARM_SUBSCRIPTION_ID: ${{ secrets.SUBSCRIPTION_ID }}
+      run: terraform apply -auto-approve -var "rglocation=${{ vars.RGLOCATION }}" -var "rgname=${{ vars.RGNAME }}" 
 
          
    
