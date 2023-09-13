@@ -1,3 +1,3 @@
-rgname =    '${{ vars.rgname }}'
+rgname =    "${{ vars.rgname }}"
 
-rglocation = '${{ vars.rglocation }}'
+rglocation = "${{ vars.rglocation }}"
